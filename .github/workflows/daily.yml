@@ -2,8 +2,6 @@ name: WorkBuddy 每日签到与派猫
 
 on:
   schedule:
-    # GitHub Actions 用 UTC 时间，每小时整点跑一次。
-    # 覆盖签到、派猫、旅行到家领积分；脚本幂等，重复运行只有首次生效。
     - cron: '0 * * * *'
   workflow_dispatch:
 
