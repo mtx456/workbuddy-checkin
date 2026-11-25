@@ -1,8 +1,13 @@
 name: WorkBuddy 每日签到与派猫
 
 on:
+  # push 触发：每次提交后自动跑一次，用于验证工作流是否生效（脚本幂等，重复运行安全）。
+  push:
   schedule:
-    - cron: '0 * * * *'
+    # GitHub Actions 用 UTC 时间，每小时第 7 分钟跑一次。
+    # 特意避开整点（:00 全平台最拥挤，任务常被丢弃/延迟）。
+    # 覆盖签到、派猫、旅行到家领积分；脚本幂等，重复运行只有首次生效。
+    - cron: '7 * * * *'
   workflow_dispatch:
 
 jobs:
